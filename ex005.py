@@ -1,7 +1,7 @@
 # 与えられたシーケンス（文字列やリストなど）からn-gramを作る関数を作成せよ．
 # この関数を用い，"i am an nlper"という文から単語bi-gram，文字bi-gramを得よ．
 def create_n_gram(l, n):
-    '''Return n-gram from list-like object.
+    '''Return n-gram of list-like object.
 
     Parameters
     ----------
@@ -21,11 +21,15 @@ def create_n_gram(l, n):
     ngram = [l[i:i+n] for i in range(length + 1)]
     return ngram
 
-string = 'i am an nlper'
-word_list = string.split()
-print('Word-wise bi-gram:')
-print(create_n_gram(word_list, 2))
-print()
-string_without_space = string.replace(' ', '')
-print('Character-wise bi-gram:')
-print(create_n_gram(string_without_space, 2))
+def main():
+    string = 'i am an nlper'
+    word_list = string.split()
+    print('Word-wise bi-gram:')
+    print(create_n_gram(word_list, 2))
+    print()
+    string_without_space = string.replace(' ', '')
+    print('Character-wise bi-gram:')
+    print(create_n_gram(string_without_space, 2))
+
+if __name__ == '__main__':
+    main()
