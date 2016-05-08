@@ -1,5 +1,5 @@
-# Language Processing 100 exercises
+# 言語処理100本ノック2015をpythonで解く
 
-Web pege is [here][1]
+[問題][1]
 
 [1]: http://www.cl.ecei.tohoku.ac.jp/nlp100/
