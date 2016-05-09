@@ -8,7 +8,7 @@ import json
 def get_url_national_flag():
     info_dict = ex028.simplify_info_dict()
     file_name = info_dict['国旗画像']
-    url = 'https://commons.wikimedia.org/w/api.php?'
+    url = 'https://commons.wikimedia.org/w/api.php'
     params = {'action': 'query', 'titles': 'File:{}'.format(file_name),
               'prop': 'imageinfo', 'iiprop': 'url', 'format': 'json'}
     params = up.urlencode(params)
