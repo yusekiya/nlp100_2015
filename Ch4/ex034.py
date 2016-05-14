@@ -10,8 +10,11 @@ def extract_noun_phrase():
         adnomial_ind = (index for index, string in enumerate(pos1_list) if string == '連体化')
         for i in adnomial_ind:
             try:
-                noun_phrase = sentence[i-1]['surface'] + 'の' + sentence[i+1]['surface']
-                ret.add(noun_phrase)
+                mb = sentence[i-1]
+                ma = sentence[i+1]
+                if (mb['pos'] == '名詞' and ma['pos'] == '名詞'):
+                    noun_phrase = sentence[i-1]['surface'] + 'の' + sentence[i+1]['surface']
+                    ret.add(noun_phrase)
             except IndexError:
                 pass
     return ret
