@@ -70,7 +70,7 @@ def generate_chunks_whole_sentence():
 def main():
     chunks = generate_chunks_whole_sentence()
     res = []
-    for chunk in chunks[7]:
+    for chunk in chunks[6]:
         surfaces = [m.surface for m in chunk.morphs]
         dst = chunk.dst
         res.append((''.join(surfaces), dst))
@@ -79,7 +79,7 @@ def main():
             surface_dst = res[dst][0]
         else:
             surface_dst = 'None'
-        print('{} -> {}'.format(surface, surface_dst))
+        print('{:　<12s} -> {}'.format(surface, surface_dst))
     return 0
 
 
