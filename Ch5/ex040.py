@@ -22,7 +22,7 @@ def extract_morph_data(line):
     return [m[0], m[7], m[1], m[2]]
 
 
-def dependency_analysis():
+def morpheme_analysis():
     ret = []
     with open('neko.txt.cabocha', 'r') as f:
         ml = []
@@ -38,10 +38,10 @@ def dependency_analysis():
                 else:
                     pass
     return ret
-            
+
 
 def main():
-    morpheme_list = dependency_analysis()
+    morpheme_list = morpheme_analysis()
     for m in morpheme_list[2]:
         print(m)
 
