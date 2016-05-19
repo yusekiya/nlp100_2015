@@ -11,12 +11,13 @@ def main():
             dst = chunk.dst
             res.append((''.join(surfaces), dst))
         for surface, dst in res:
-            if dst != -1:
+            if surface == '':
+                continue
+            elif dst != -1:
                 surface_dst = res[dst][0]
             else:
                 surface_dst = 'None'
-            if surface != '':
-                print('{}\t{}'.format(surface, surface_dst))
+            print('{}\t{}'.format(surface, surface_dst))
 
 
 if __name__ == '__main__':
