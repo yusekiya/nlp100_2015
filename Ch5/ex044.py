@@ -6,11 +6,11 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 def main():
-    chunks = ex041.generate_chunks_whole_sentence()
+    sentences = ex041.generate_chunks_whole_sentence()
     res = []
-    for sentence in chunks:
+    for sentence in sentences:
         surface_dst = [(chunk.get_phrase(), chunk.dst) for chunk in sentence]
-        dependency = [('{}'.format(surface), '{}'.format(surface_dst[dst][0]))\
+        dependency = [('{}'.format(surface), '{}'.format(surface_dst[dst][0]))
                       for surface, dst in surface_dst if surface and dst!=-1]
         if dependency:
             res.append(dependency)
