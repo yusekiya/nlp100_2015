@@ -9,19 +9,14 @@ def main():
     chunks = ex041.generate_chunks_whole_sentence()
     res = []
     for sentence in chunks:
-        surface_dst = [(join_surfaces_in_chunk(chunk), chunk.dst) for chunk in sentence]
+        surface_dst = [(chunk.get_phrase(), chunk.dst) for chunk in sentence]
         dependency = [('{}'.format(surface), '{}'.format(surface_dst[dst][0]))\
                       for surface, dst in surface_dst if surface and dst!=-1]
         if dependency:
             res.append(dependency)
     # output dot lang for n-th sentence
-    output_dot(res[8])
+    output_dot(res[9])
     return 0
-
-
-def join_surfaces_in_chunk(chunk):
-    surfaces = [m.surface for m in chunk.morphs if m.pos != '記号']
-    return ''.join(surfaces)
 
 
 def plot_network(DiGraph):
