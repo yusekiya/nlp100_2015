@@ -9,10 +9,15 @@ import re
 p_dependency = re.compile(r'\*\s(\d+)\s(-?\d+)D')
 
 class Chunk(object):
+
     def __init__(self, morphs, dst, srcs):
         self.morphs = morphs
         self.dst = dst
         self.srcs = srcs
+
+    def get_phrase(self):
+        surfaces = [m.surface for m in self.morphs if m.pos != '記号']
+        return ''.join(surfaces)
 
 
 def dependency_analysis(sentence):
