@@ -3,21 +3,16 @@
 import ex041
 
 def main():
-    chunks = ex041.generate_chunks_whole_sentence()
-    for sentence in chunks:
-        res = []
+    sentences = ex041.generate_chunks_whole_sentence()
+    for sentence in sentences:
         for chunk in sentence:
-            surfaces = [m.surface for m in chunk.morphs if m.pos != '記号']
             dst = chunk.dst
-            res.append((''.join(surfaces), dst))
-        for surface, dst in res:
-            if surface == '':
-                continue
-            elif dst != -1:
-                surface_dst = res[dst][0]
-            else:
-                surface_dst = 'None'
-            print('{}\t{}'.format(surface, surface_dst))
+            if dst == -1: continue
+            dst_chunk = sentence[dst]
+            src_phrase = chunk.get_phrase()
+            dst_phrase = dst_chunk.get_phrase()
+            if src_phrase == '': continue
+            print('{}\t{}'.format(src_phrase, dst_phrase))
 
 
 if __name__ == '__main__':
