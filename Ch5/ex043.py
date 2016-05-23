@@ -3,22 +3,17 @@
 import ex041
 
 def main():
-    chunks = ex041.generate_chunks_whole_sentence()
-    for sentence in chunks:
-        res = []
+    sentences = ex041.generate_chunks_whole_sentence()
+    for sentence in sentences:
         for chunk in sentence:
-            surfaces = [m.surface for m in chunk.morphs if m.pos != '記号']
-            poses = [m.pos for m in chunk.morphs if m.pos != '記号']
             dst = chunk.dst
-            res.append((''.join(surfaces), poses, dst))
-        for surface, poses, dst in res:
-            if surface == '':
-                continue
-            elif dst != -1 and '名詞' in poses and '動詞' in res[dst][1]:
-                print('{}\t{}'.format(surface, res[dst][0]))
-                surface_dst = res[dst][0]
-            else:
-                pass
+            if dst == -1: continue
+            dst_chunk = sentence[dst]
+            if chunk.has_noun() and dst_chunk.has_verb():
+                src_phrase = chunk.get_phrase()
+                dst_phrase = dst_chunk.get_phrase()
+                assert src_phrase != '', 'Source phrase is empty'
+                print('{}\t{}'.format(src_phrase, dst_phrase))
 
 
 if __name__ == '__main__':
