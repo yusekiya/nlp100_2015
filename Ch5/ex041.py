@@ -19,13 +19,9 @@ class Chunk(object):
         surfaces = [m.surface for m in self.morphs if m.pos != '記号']
         return ''.join(surfaces)
 
-    def has_noun(self):
+    def has_pos(self, pos):
         poses = [m.pos for m in self.morphs]
-        return '名詞' in poses
-
-    def has_verb(self):
-        poses = [m.pos for m in self.morphs]
-        return '動詞' in poses
+        return pos in poses
 
 
 def dependency_analysis(sentence):

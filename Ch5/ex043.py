@@ -9,7 +9,7 @@ def main():
             dst = chunk.dst
             if dst == -1: continue
             dst_chunk = sentence[dst]
-            if chunk.has_noun() and dst_chunk.has_verb():
+            if chunk.has_pos('名詞') and dst_chunk.has_pos('動詞'):
                 src_phrase = chunk.get_phrase()
                 dst_phrase = dst_chunk.get_phrase()
                 assert src_phrase != '', 'Source phrase is empty'
