@@ -14,7 +14,9 @@ def main():
             verb_base = [m.base for m in chunk.morphs if m.pos == '動詞']
             if not verb_base: continue
             src_chunks = [sentence[i] for i in chunk.srcs]
-            pp_list = [m.base for src_chunk in src_chunks for m in src_chunk.morphs if m.pos=='助詞']
+            pp_list = [m.base for src_chunk in src_chunks
+                       for m in src_chunk.morphs if m.pos=='助詞']
+            pp_list = sorted(pp_list)
             if pp_list: print('{}\t{}'.format(verb_base[0], ' '.join(pp_list)))
 
 
